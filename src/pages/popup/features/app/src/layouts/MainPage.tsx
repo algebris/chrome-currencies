@@ -9,14 +9,6 @@ import { Footer } from '../components/Footer';
 
 export const MainPage: React.FC = () => {
   const tickerData = useCryptoTicker();
-
-  if(!tickerData) {
-    return (
-      <Center>
-        <Loader />
-      </Center>
-    );
-  }
   
   return (
     <AppShell
@@ -30,9 +22,14 @@ export const MainPage: React.FC = () => {
       })}
       footer={<Footer />}
     >
-      {Object.entries(tickerData).map(([symbol, data]) => (
-        <TickerDisplay key={symbol} symbol={symbol} {...data} />
-      ))}
+    {
+      !tickerData
+      ? <Center><Loader /></Center>
+      : Object.entries(tickerData)
+          .map(([symbol, data]) => ( 
+            <TickerDisplay key={symbol} symbol={symbol} {...data} /> 
+          ))
+    }
     </AppShell>
   );
 }

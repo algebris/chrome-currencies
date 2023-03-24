@@ -1,6 +1,8 @@
 # Exchange Rates
 ## Simple Chrome Extension
 
+![Browser extension](./public/img/chrome-ext.png)
+
 ### Installation
 Install latest node.js 
 
